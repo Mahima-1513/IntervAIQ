@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IntervAIQ - AI Interview Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo">🤖</span>
+            <div>
+                <h2>IntervAIQ</h2>
+                <p>AI Interview & Skill Gap Analyzer</p>
+            </div>
+        </div>
+        <div class="nav-links">
+            <a href="#upload">Upload</a>
+            <a href="#skillgap">Skill Gap</a>
+            <a href="#interview">Interview</a>
+            <a href="#evaluate">Evaluate</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">✨ AI Powered</span>
+            <h1>Prepare Smarter.<br><span class="highlight">Interview Better.</span></h1>
+            <p>Upload your resume, analyze your skill gap, generate AI interview questions and get instant feedback —
+                all in one place.</p>
+            <a href="#upload" class="cta-btn">Get Started ↓</a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="card" id="upload">
+            <div class="card-header">
+                <span class="icon">📄</span>
+                <h2>Upload Your Resume</h2>
+            </div>
+            <p class="card-sub">PDF format supported</p>
+
+            <div class="upload-box">
+                <input type="file" id="resume" accept=".pdf">
+                <button class="primary-btn" onclick="uploadResume()">Analyze Resume</button>
+            </div>
+
+            <div id="resumeResult" class="result-box"></div>
+        </section>
+
+        <section class="card" id="skillgap">
+            <div class="card-header">
+                <span class="icon">🎯</span>
+                <h2>Select Job Role</h2>
+            </div>
+            <p class="card-sub">Choose the role you're targeting</p>
+
+            <div class="upload-box">
+                <select id="jobRole">
+                    <option value="python_developer">Python Developer</option>
+                    <option value="data_analyst">Data Analyst</option>
+                    <option value="machine_learning_engineer">Machine Learning Engineer</option>
+                    <option value="full_stack_developer">Full Stack Developer</option>
+                </select>
+                <button class="primary-btn" onclick="checkSkillGap()">Check Skill Gap</button>
+            </div>
+
+            <div id="skillResult" class="result-box"></div>
+        </section>
+
+        <section class="card" id="interview">
+            <div class="card-header">
+                <span class="icon">🤖</span>
+                <h2>AI Interview</h2>
+            </div>
+            <p class="card-sub">Get role-based interview questions instantly</p>
+
+            <button class="primary-btn" onclick="generateInterview()">Generate Interview Questions</button>
+
+            <div id="questions" class="result-box"></div>
+        </section>
+
+        <section class="card" id="evaluate">
+            <div class="card-header">
+                <span class="icon">🧠</span>
+                <h2>AI Answer Evaluator</h2>
+            </div>
+            <p class="card-sub">Paste a question and your answer to get scored feedback</p>
+
+            <textarea id="question" placeholder="Enter interview question..."></textarea>
+            <textarea id="answer" placeholder="Type your answer here..."></textarea>
+
+            <button class="primary-btn" onclick="evaluateAnswer()">Evaluate My Answer</button>
+
+            <div id="evaluation" class="result-box"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Built with ❤️ using FastAPI + Groq AI — IntervAIQ © 2026</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
