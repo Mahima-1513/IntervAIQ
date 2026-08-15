@@ -1,82 +1,65 @@
-# 🤖 IntervAIQ — AI Interview & Skill Gap Analyzer
+# 🤖 IntervAIQ – AI Interview & Skill Gap Analyzer
 
-IntervAIQ is an AI-powered interview preparation platform that helps candidates analyze their skills, identify skill gaps, generate personalized interview questions, and receive AI-powered feedback on their answers.
+IntervAIQ is an AI-powered web application that helps candidates prepare for technical interviews by analyzing resumes, identifying skill gaps, generating interview questions, evaluating answers, and calculating an overall interview readiness score.
 
-## 🚀 Features
+## 🚀 Live Demo
 
-- 📄 Resume PDF Upload
-- 🔍 Automatic Skill Extraction
-- 🎯 Job Role Based Skill Gap Analysis
-- 📊 Skill Match Percentage
-- 📚 Personalized Learning Roadmap
-- 🤖 AI Generated Interview Questions
-- 🎚️ Easy, Medium & Hard Questions
-- 🧠 AI Answer Evaluation
-- ⚡ FastAPI Backend
-- 🌐 Interactive Web Frontend
+Frontend: https://intervaiq-frontend.onrender.com
+
+Backend API: https://intervaiq.onrender.com
+
+## ✨ Features
+
+- 📄 Resume Upload & Analysis
+- 🧠 AI-based Skill Gap Analysis
+- 🎯 Personalized Skill Recommendations
+- 💬 AI-generated Interview Questions
+- 📊 Candidate Answer Evaluation
+- 📈 Interview Readiness Score
+- 🔌 REST API based Backend
+- 🌐 Deployed Frontend & Backend
 
 ## 🛠️ Tech Stack
-
-### Backend
-- Python
-- FastAPI
-- Pydantic
-- REST API
-
-### AI / ML
-- Groq LLM
-- AI-based interview generation
-- AI-based answer evaluation
-- Python libraries
 
 ### Frontend
 - HTML
 - CSS
 - JavaScript
 
-### Tools
-- Git
+### Backend
+- Python
+- FastAPI
+- REST APIs
+
+### AI / Machine Learning
+- AI-based response generation
+- Resume skill extraction
+- Skill gap analysis
+- Interview answer evaluation
+
+### Deployment
 - GitHub
+- Render
 
-## 🎯 Problem Statement
-
-Many candidates prepare for interviews without knowing:
-
-- Which skills they already have
-- Which skills are missing for a particular job role
-- What type of questions they may face
-- Whether their interview answers are technically correct
-- Which topics they should improve first
-
-IntervAIQ addresses these problems by providing a personalized interview preparation workflow based on the candidate's resume and selected job role.
-
----
-
-## 💡 Solution
-
-IntervAIQ analyzes the candidate's resume and creates a personalized preparation journey:
+## 📂 Project Structure
 
 ```text
-Resume
-   ↓
-PDF Text Extraction
-   ↓
-Skill Detection
-   ↓
-Select Target Job Role
-   ↓
-Skill Gap Analysis
-   ↓
-Skill Match Percentage
-   ↓
-Missing Skills
-   ↓
-Personalized Learning Roadmap
-   ↓
-AI Interview Questions
-   ↓
-Candidate Answer
-   ↓
-AI Evaluation
-   ↓
-Score + Feedback
+IntervAIQ/
+│
+├── backend/
+│   ├── main.py
+│   ├── ai_service.py
+│   ├── job_roles.py
+│   ├── roadmap.py
+│   └── skill_extractor.py
+│
+├── frontend/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+│
+├── data/
+├── ml/
+├── requirements.txt
+├── README.md
+└── .gitignore
