@@ -1,3 +1,8 @@
+/* =========================================================
+   INTERVAIQ - GLOBAL STYLES
+   AI Interview & Skill Gap Analyzer
+   ========================================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -5,23 +10,35 @@
     font-family: 'Inter', sans-serif;
 }
 
-body {
-    background: #0f0f1a;
-    color: #e8e8f0;
+html {
     scroll-behavior: smooth;
 }
 
-/* ===== NAVBAR ===== */
+body {
+    background: #0f0f1a;
+    color: #e8e8f0;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
 .navbar {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     padding: 16px 40px;
-    background: rgba(15, 15, 26, 0.8);
+
+    background: rgba(15, 15, 26, 0.92);
     backdrop-filter: blur(12px);
+
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -38,7 +55,7 @@ body {
 .nav-brand h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
-    color: #fff;
+    color: #ffffff;
 }
 
 .nav-brand p {
@@ -56,97 +73,155 @@ body {
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    transition: color 0.2s;
+
+    transition: 0.2s ease;
 }
 
 .nav-links a:hover {
     color: #a78bfa;
 }
 
-/* ===== HERO ===== */
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
 .hero {
     text-align: center;
+
     padding: 90px 20px 70px;
-    background: radial-gradient(circle at 50% 0%, rgba(124, 58, 237, 0.25), transparent 60%);
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(124, 58, 237, 0.25),
+            transparent 60%);
 }
 
 .badge {
     display: inline-block;
+
     padding: 6px 16px;
+
     border-radius: 20px;
+
     background: rgba(167, 139, 250, 0.15);
     color: #a78bfa;
+
     font-size: 13px;
     font-weight: 600;
+
     margin-bottom: 20px;
 }
 
 .hero h1 {
     font-family: 'Poppins', sans-serif;
+
     font-size: 44px;
     font-weight: 700;
-    color: #fff;
+
+    color: #ffffff;
+
     line-height: 1.3;
 }
 
 .hero .highlight {
-    background: linear-gradient(90deg, #a78bfa, #f472b6);
+    background: linear-gradient(90deg,
+            #a78bfa,
+            #f472b6);
+
     -webkit-background-clip: text;
     background-clip: text;
+
     color: transparent;
 }
 
 .hero p {
-    max-width: 560px;
+    max-width: 600px;
+
     margin: 20px auto 30px;
+
     color: #a3a3bc;
+
     font-size: 16px;
     line-height: 1.6;
 }
 
 .cta-btn {
     display: inline-block;
+
     padding: 14px 32px;
-    background: linear-gradient(90deg, #7c3aed, #a78bfa);
-    color: #fff;
+
+    background: linear-gradient(90deg,
+            #7c3aed,
+            #a78bfa);
+
+    color: #ffffff;
+
     text-decoration: none;
+
     font-weight: 600;
+
     border-radius: 10px;
-    transition: transform 0.2s, box-shadow 0.2s;
+
+    transition: 0.2s ease;
 }
 
 .cta-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(124, 58, 237, 0.4);
+
+    box-shadow:
+        0 8px 24px rgba(124, 58, 237, 0.4);
 }
 
-/* ===== MAIN / CARDS ===== */
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
 main {
-    max-width: 800px;
+    width: 100%;
+    max-width: 900px;
+
     margin: 0 auto;
+
     padding: 20px 20px 80px;
+
     display: flex;
     flex-direction: column;
+
     gap: 24px;
 }
 
+
+/* =========================================================
+   CARDS
+   ========================================================= */
+
 .card {
+    width: 100%;
+
     background: rgba(255, 255, 255, 0.04);
+
     border: 1px solid rgba(255, 255, 255, 0.08);
+
     border-radius: 16px;
+
     padding: 28px;
-    transition: border 0.2s;
+
+    transition: 0.2s ease;
 }
 
 .card:hover {
-    border: 1px solid rgba(167, 139, 250, 0.3);
+    border-color: rgba(167, 139, 250, 0.3);
 }
 
 .card-header {
     display: flex;
     align-items: center;
+
     gap: 10px;
-    margin-bottom: 4px;
+
+    margin-bottom: 6px;
 }
 
 .card-header .icon {
@@ -155,239 +230,673 @@ main {
 
 .card-header h2 {
     font-family: 'Poppins', sans-serif;
-    font-size: 19px;
-    color: #fff;
+
+    font-size: 20px;
+
+    color: #ffffff;
 }
 
 .card-sub {
     color: #8a8aa3;
-    font-size: 13px;
-    margin-bottom: 18px;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
 }
 
-/* ===== INPUTS ===== */
+
+/* =========================================================
+   INPUT AREA
+   ========================================================= */
+
 .upload-box {
     display: flex;
+
+    align-items: center;
+
     gap: 12px;
+
     flex-wrap: wrap;
 }
 
 input[type="file"],
 select,
 textarea {
-    flex: 1;
-    min-width: 200px;
+    min-width: 0;
+
     padding: 12px 14px;
+
     border-radius: 8px;
+
     border: 1px solid rgba(255, 255, 255, 0.12);
+
     background: rgba(255, 255, 255, 0.03);
+
     color: #e8e8f0;
+
     font-size: 14px;
+
     font-family: inherit;
+}
+
+input[type="file"] {
+    flex: 1;
+}
+
+select {
+    flex: 1;
+    cursor: pointer;
+}
+
+select option {
+    background: #1b1b2a;
+    color: #ffffff;
 }
 
 textarea {
     width: 100%;
-    min-height: 90px;
+
+    min-height: 100px;
+
     resize: vertical;
+
     margin-bottom: 12px;
 }
 
-select {
-    cursor: pointer;
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+
+    border-color: #a78bfa;
+
+    box-shadow:
+        0 0 0 2px rgba(167, 139, 250, 0.12);
 }
 
-/* ===== BUTTONS ===== */
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
 .primary-btn {
-    padding: 12px 22px;
+    padding: 13px 24px;
+
     border: none;
-    border-radius: 8px;
-    background: linear-gradient(90deg, #7c3aed, #a78bfa);
-    color: #fff;
+
+    border-radius: 9px;
+
+    background: linear-gradient(90deg,
+            #7c3aed,
+            #a78bfa);
+
+    color: #ffffff;
+
     font-weight: 600;
+
     font-size: 14px;
+
     cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s;
+
+    transition: 0.2s ease;
+
+    white-space: nowrap;
 }
 
 .primary-btn:hover {
     transform: translateY(-1px);
-    box-shadow: 0 6px 18px rgba(124, 58, 237, 0.35);
+
+    box-shadow:
+        0 6px 18px rgba(124, 58, 237, 0.35);
 }
 
 .primary-btn:active {
     transform: translateY(0);
 }
 
-/* ===== RESULT BOX ===== */
+
+/* =========================================================
+   RESULT BOX
+   ========================================================= */
+
 .result-box {
     margin-top: 18px;
-    padding: 16px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.03);
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
     font-size: 14px;
+
     line-height: 1.6;
+
     color: #cfcfe0;
-    white-space: pre-wrap;
+
+    white-space: normal;
 }
 
 .result-box:empty {
     display: none;
 }
 
-/* ===== FOOTER ===== */
-footer {
-    text-align: center;
-    padding: 24px;
-    color: #6c6c85;
-    font-size: 13px;
-    border-top: 1px solid rgba(255, 255, 255, 0.06);
-}
 
-/* ===== MOBILE ===== */
-@media (max-width: 640px) {
-    .navbar {
-        flex-direction: column;
-        gap: 10px;
-        padding: 14px 20px;
-    }
+/* =========================================================
+   RESULT TITLES
+   ========================================================= */
 
-    .nav-links {
-        gap: 14px;
-    }
-
-    .hero h1 {
-        font-size: 30px;
-    }
-
-    main {
-        padding: 20px 14px 60px;
-    }
-}
-
-/* ===== RESULT TITLES ===== */
 .result-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+
+    font-size: 17px;
+
     font-weight: 600;
-    color: #fff;
-    margin-bottom: 14px;
+
+    color: #ffffff;
+
+    margin-bottom: 12px;
 }
 
 .result-title.success {
     color: #4ade80;
 }
 
-/* ===== SKILL CHIPS ===== */
+
+/* =========================================================
+   SKILL CHIPS
+   ========================================================= */
+
 .chip-label {
     font-size: 13px;
+
     color: #9a9ab0;
-    margin: 14px 0 8px;
+
+    margin: 16px 0 8px;
 }
 
 .chip-container {
     display: flex;
+
     flex-wrap: wrap;
+
     gap: 8px;
 }
 
 .chip {
     display: inline-block;
+
     padding: 6px 12px;
+
     border-radius: 20px;
+
     font-size: 13px;
+
     font-weight: 500;
+
     background: rgba(167, 139, 250, 0.15);
+
     color: #c4b5fd;
+
     border: 1px solid rgba(167, 139, 250, 0.3);
 }
 
 .chip-green {
     background: rgba(74, 222, 128, 0.12);
+
     color: #4ade80;
-    border: 1px solid rgba(74, 222, 128, 0.3);
+
+    border-color: rgba(74, 222, 128, 0.3);
 }
 
 .chip-red {
     background: rgba(248, 113, 113, 0.12);
+
     color: #f87171;
-    border: 1px solid rgba(248, 113, 113, 0.3);
+
+    border-color: rgba(248, 113, 113, 0.3);
 }
 
 .muted {
     color: #6c6c85;
+
     font-size: 13px;
 }
 
-/* ===== PROGRESS BAR (Skill Match %) ===== */
+
+/* =========================================================
+   SKILL MATCH PROGRESS BAR
+   ========================================================= */
+
 .progress-label {
     display: flex;
+
     justify-content: space-between;
+
     font-size: 13px;
+
     color: #a3a3bc;
+
     margin: 14px 0 6px;
 }
 
 .progress-track {
     width: 100%;
+
     height: 10px;
+
     border-radius: 20px;
+
     background: rgba(255, 255, 255, 0.06);
+
     overflow: hidden;
 }
 
 .progress-fill {
     height: 100%;
+
     border-radius: 20px;
-    background: linear-gradient(90deg, #7c3aed, #a78bfa);
+
+    background: linear-gradient(90deg,
+            #7c3aed,
+            #a78bfa);
+
     transition: width 0.6s ease;
 }
 
-/* ===== SCORE CIRCLE (Answer Evaluation) ===== */
-.score-circle {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background: rgba(167, 139, 250, 0.1);
-    border: 3px solid #a78bfa;
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    margin: 0 auto 20px;
-}
 
-.score-number {
-    font-family: 'Poppins', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-    color: #fff;
-}
+/* =========================================================
+   AI RESPONSE
+   ========================================================= */
 
-.score-total {
-    font-size: 14px;
-    color: #a3a3bc;
-    margin-left: 2px;
-}
-
-/* ===== AI RESPONSE FORMATTING ===== */
 .ai-response {
     font-size: 14px;
+
     line-height: 1.7;
+
     color: #cfcfe0;
 }
 
 .section-heading {
     font-family: 'Poppins', sans-serif;
+
     font-size: 14px;
+
     font-weight: 600;
+
     color: #a78bfa;
-    margin: 16px 0 8px;
+
+    margin: 14px 0 6px;
+
     padding-top: 8px;
+
     border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .bullet {
     margin-left: 6px;
-    margin-bottom: 4px;
+
+    margin-bottom: 5px;
+
     color: #cfcfe0;
+}
+
+
+/* =========================================================
+   ANSWER EVALUATION
+   ========================================================= */
+
+#evaluation {
+    display: block;
+}
+
+#evaluation .result-title {
+    margin-bottom: 14px;
+}
+
+/* Score circle */
+
+#evaluation .score-circle {
+    width: 105px;
+    height: 105px;
+
+    margin: 10px auto 20px;
+
+    border-radius: 50%;
+
+    background: rgba(167, 139, 250, 0.10);
+
+    border: 3px solid #a78bfa;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+}
+
+#evaluation .score-number {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 36px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+#evaluation .score-total {
+    font-size: 14px;
+
+    color: #a3a3bc;
+}
+
+
+/* =========================================================
+   INTERVIEW READINESS
+   ========================================================= */
+
+.readiness-card {
+    padding: 30px;
+}
+
+.readiness-content {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    gap: 18px;
+
+    margin-top: 20px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Readiness Circle */
+
+.readiness-card .score-circle {
+    width: 135px;
+    height: 135px;
+
+    border-radius: 50%;
+
+    background: rgba(167, 139, 250, 0.10);
+
+    border: 4px solid #a78bfa;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+.readiness-card .score-circle>div {
+    display: flex;
+
+    align-items: baseline;
+
+    justify-content: center;
+
+    gap: 4px;
+}
+
+#readinessScore {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    color: #ffffff;
+}
+
+.readiness-card .score-circle small {
+    font-size: 14px;
+
+    color: #cfcfe0;
+}
+
+
+/* Readiness Information */
+
+.readiness-info {
+    width: 100%;
+
+    text-align: center;
+}
+
+.readiness-info h3 {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 24px;
+
+    color: #ffffff;
+
+    margin-bottom: 8px;
+}
+
+.readiness-info>p {
+    color: #a3a3bc;
+
+    font-size: 14px;
+
+    margin-bottom: 18px;
+}
+
+
+/* Score Details */
+
+.score-details {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+}
+
+.score-details>div {
+    min-width: 180px;
+
+    padding: 16px 20px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+.score-details strong {
+    color: #a3a3bc;
+
+    font-size: 13px;
+}
+
+.score-details span {
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: #a78bfa;
+}
+
+
+/* Readiness Button */
+
+.readiness-card>.primary-btn {
+    display: block;
+
+    margin: 0 auto;
+
+    min-width: 280px;
+}
+
+
+/* Readiness Result */
+
+#readinessResult {
+    text-align: center;
+
+    margin-top: 18px;
+
+    font-size: 15px;
+
+    color: #cfcfe0;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    text-align: center;
+
+    padding: 24px;
+
+    color: #6c6c85;
+
+    font-size: 13px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 14px 20px;
+    }
+
+    .nav-links {
+        gap: 14px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 65px 20px 50px;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    main {
+        padding: 20px 14px 60px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .upload-box {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    input[type="file"],
+    select,
+    .upload-box .primary-btn {
+        width: 100%;
+    }
+
+    .primary-btn {
+        width: 100%;
+    }
+
+    .score-details {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .score-details>div {
+        width: 100%;
+    }
+
+    .readiness-card>.primary-btn {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .nav-brand h2 {
+        font-size: 16px;
+    }
+
+    .nav-brand p {
+        font-size: 10px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .card-header h2 {
+        font-size: 18px;
+    }
+
+    .readiness-card .score-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    #readinessScore {
+        font-size: 30px;
+    }
+
+    .readiness-info h3 {
+        font-size: 21px;
+    }
+
+    #evaluation .score-circle {
+        width: 95px;
+        height: 95px;
+    }
+
+    #evaluation .score-number {
+        font-size: 32px;
+    }
 }

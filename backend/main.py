@@ -157,3 +157,37 @@ async def evaluate_candidate_answer(request: AnswerRequest):
     return {
         "evaluation": feedback
     }
+
+@app.get("/readiness-score")
+async def readiness_score(
+    matched_skills: int = 5,
+    total_skills: int = 7,
+    interview_score: int = 7
+):
+    # Skill score = 60%
+    if total_skills > 0:
+        skill_score = (matched_skills / total_skills) * 60
+    else:
+        skill_score = 0
+
+    # Interview score = 40%
+    interview_part = (interview_score / 10) * 40
+
+    # Overall score
+    overall_score = round(skill_score + interview_part)
+
+    if overall_score >= 80:
+        level = "Excellent"
+    elif overall_score >= 60:
+        level = "Good"
+    elif overall_score >= 40:
+        level = "Needs Improvement"
+    else:
+        level = "Beginner"
+
+    return {
+        "overall_score": overall_score,
+        "level": level,
+        "skill_score": round(skill_score),
+        "interview_score": interview_score
+    }    
