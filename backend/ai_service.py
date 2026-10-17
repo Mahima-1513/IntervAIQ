@@ -4,6 +4,8 @@ from groq import Groq
 
 load_dotenv()
 
+GROQ_MODEL = os.getenv("GROQ_MODEL", "openai/gpt-oss-20b")
+
 client = Groq(
     api_key=os.getenv("GROQ_API_KEY")
 )
@@ -32,7 +34,7 @@ Return the questions in a clear format.
 """
 
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model=GROQ_MODEL,
         messages=[
             {
                 "role": "user",
@@ -82,7 +84,7 @@ Final Feedback:
 """
 
     response = client.chat.completions.create(
-        model="llama-3.1-8b-instant",
+        model=GROQ_MODEL,
         messages=[
             {
                 "role": "user",

@@ -226,6 +226,14 @@ async function generateInterview() {
 
         const data = await response.json();
 
+        if (!response.ok) {
+            const detail = data.detail || data.error || `Request failed (${response.status})`;
+            throw new Error(detail);
+        }
+
+        if (!data.questions) {
+            throw new Error("The backend returned no interview questions.");
+        }
 
         result.innerHTML = `
 
@@ -241,9 +249,7 @@ async function generateInterview() {
 
     } catch (error) {
 
-        result.innerHTML =
-            "❌ Unable to generate questions.";
-
+        result.innerHTML = `❌ Unable to generate questions: ${error.message}`;
         console.error(error);
     }
 }
