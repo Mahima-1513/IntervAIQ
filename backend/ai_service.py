@@ -16,21 +16,29 @@ def generate_interview_questions(job_role, skills):
     prompt = f"""
 You are an expert technical interviewer.
 
-Generate interview questions for a candidate.
+Create a clear, practical interview practice set for a candidate.
 
 Job Role: {job_role}
 
 Candidate Skills:
 {", ".join(skills)}
 
-Generate:
-- 3 Easy questions
-- 3 Medium questions
-- 2 Hard questions
+Write exactly 8 concise questions: 3 Easy, 3 Medium, and 2 Hard.
+Use this exact format, with one question per line:
+Easy
+1. [Skill] Question?
+2. [Skill] Question?
+3. [Skill] Question?
+Medium
+1. [Skill] Question?
+2. [Skill] Question?
+3. [Skill] Question?
+Hard
+1. [Skill] Question?
+2. [Skill] Question?
 
-Focus on the candidate's skills and job role.
-
-Return the questions in a clear format.
+Ask natural questions a real interviewer might ask. Keep each question easy to understand and focused on one idea. Mix foundational concepts with practical, job-related scenarios. Avoid tables, markdown grids, answers, long introductions, and duplicate questions.
+Use only the provided job role and skills when choosing topics. Do not include literal Markdown symbols such as **, |, or #.
 """
 
     response = client.chat.completions.create(

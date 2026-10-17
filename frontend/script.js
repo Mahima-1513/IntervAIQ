@@ -241,8 +241,10 @@ async function generateInterview() {
                 🤖 AI Interview Questions
             </div>
 
+            <p class="question-role">Practice questions for <strong>${escapeHTML(formatJobRole(data.job_role || jobRole))}</strong></p>
+
             <div class="ai-response">
-                ${formatAIResponse(data.questions)}
+                ${formatInterviewQuestions(data.questions)}
             </div>
 
         `;
@@ -414,6 +416,99 @@ function formatAIResponse(text) {
 
 
     return formatted;
+}
+
+function formatInterviewQuestions(text) {
+    const groups = { Easy: [], Medium: [], Hard: [] };
+    let currentLevel = "";
+    const lines = String(text).split(/\r?\n/);
+
+    for (const rawLine of lines) {
+        const line = rawLine.trim();
+        if (!line || /^\|?\s*:?-{3,}/.test(line)) continue;
+
+        const cells = line.split("|").map(cell => cell.trim());
+        while (cells.length && !cells[0]) cells.shift();
+        while (cells.length && !cells[cells.length - 1]) cells.pop();
+        if (/^(difficulty|level)$/i.test(cells[0] || "") || /^(question|focus area|skill focus)$/i.test(cells[1] || "")) continue;
+
+        let level = "";
+        let question = "";
+        let skill = "";
+
+        if (cells.length >= 3 && /^(easy|medium|hard|beginner|intermediate|advanced)$/i.test(cells[0])) {
+            level = cells[0];
+            currentLevel = level.toLowerCase();
+            question = cells[1];
+            skill = cells[2];
+        } else if (line.includes("|") && currentLevel && cells.length >= 2) {
+            question = cells[0];
+            skill = cells[1];
+        } else {
+            const heading = line.replace(/^#{1,3}\s*/, "").replace(/\*\*/g, "").replace(/:$/, "").trim();
+            if (/interview questions|question bank/i.test(heading)) continue;
+            const matchedLevel = heading.match(/^(easy|medium|hard|beginner|intermediate|advanced)( questions)?$/i);
+            if (matchedLevel) {
+                currentLevel = matchedLevel[1].toLowerCase();
+                continue;
+            }
+            currentLevel = currentLevel || "easy";
+            question = cells.length > 1 ? cells.slice(1).join(" ") : line;
+            const numbered = question.match(/^\s*(?:\d+[.)]|[-*])\s*(.*)$/);
+            if (numbered) question = numbered[1];
+        }
+
+        question = question
+            .replace(/\*\*/g, "")
+            .replace(/`/g, "")
+            .replace(/^\s*(?:\d+[.)]|[-*])\s*/, "")
+            .trim();
+        const taggedQuestion = question.match(/^\[([^\]]+)\]\s*(.*)$/);
+        if (taggedQuestion) {
+            skill = skill || taggedQuestion[1];
+            question = taggedQuestion[2];
+        }
+        if (!question || /^(question|skill focus)$/i.test(question)) continue;
+
+        const normalizedLevel = (level || currentLevel).toLowerCase();
+        const group = /^(easy|beginner)$/.test(normalizedLevel) ? "Easy"
+            : /^(medium|intermediate)$/.test(normalizedLevel) ? "Medium"
+            : /^(hard|advanced)$/.test(normalizedLevel) ? "Hard" : "Easy";
+        groups[group].push({ skill: skill.replace(/\*\*/g, "").replace(/`/g, ""), question });
+    }
+
+    const sections = Object.entries(groups).filter(([, items]) => items.length);
+    if (!sections.length) {
+        const cleaned = String(text).replace(/\*\*/g, "").replace(/`/g, "").replace(/\|/g, " ").trim();
+        return `<section class="question-level"><h4>Easy</h4><div class="question-card"><p>${escapeHTML(cleaned)}</p></div></section>`;
+    }
+
+    return sections.map(([level, items]) => `
+        <section class="question-level">
+            <h4>${level}</h4>
+            <div class="question-list">
+                ${items.map(({ skill, question }, index) => `
+                    <article class="question-card">
+                        <span class="question-number">${index + 1}</span>
+                        <div>
+                            ${skill ? `<span class="question-skill">${escapeHTML(skill)}</span>` : ""}
+                            <p>${escapeHTML(question)}</p>
+                        </div>
+                    </article>
+                `).join("")}
+            </div>
+        </section>
+    `).join("");
+}
+
+function formatJobRole(role) {
+    return String(role).replace(/[_-]+/g, " ").replace(/\b\w/g, letter => letter.toUpperCase());
+}
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, character => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+    })[character]);
 }
 
 
